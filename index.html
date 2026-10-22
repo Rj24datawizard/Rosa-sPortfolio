@@ -5,275 +5,985 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Rosa John | Data Analytics Portfolio</title>
-  <meta name="description" content="Explore Rosa John's Power BI and data analytics projects, business insights, and visual storytelling.">
+  <title>Rosa John | Data Analytics & Business Intelligence Portfolio</title>
+
+  <meta name="description"
+        content="Explore Rosa John's Power BI projects, data analytics portfolio, business insights, and professional credentials.">
+
+  <meta name="theme-color" content="#0b1120">
 
   <style>
+    /* ===== GLOBAL STYLES ===== */
+    :root {
+      --bg: #0b1120;
+      --surface: #121d30;
+      --surface-light: #19283e;
+      --border: #293950;
+      --text: #f1f5f9;
+      --muted: #a9b8ca;
+      --accent: #67e8f9;
+      --accent-dark: #0891b2;
+      --success: #86efac;
+    }
+
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 85px;
     }
 
     body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #0b1120;
-      color: #f8fafc;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
       line-height: 1.7;
     }
 
-    nav {
-      max-width: 1100px;
-      margin: auto;
-      padding: 20px;
+    a {
+      color: var(--accent);
+    }
+
+    a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+    }
+
+    .container {
+      width: min(1100px, 90%);
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 65px 0;
+    }
+
+    .section-heading {
+      font-size: clamp(26px, 4vw, 36px);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      max-width: 740px;
+      margin-bottom: 28px;
+    }
+
+    .accent {
+      color: var(--accent);
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.7px;
+    }
+
+    /* ===== NAVIGATION ===== */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11, 17, 32, 0.96);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-inner {
+      min-height: 72px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 17px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 19px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      padding: 100px 0 85px;
+      background:
+        radial-gradient(
+          ellipse at 80% 15%,
+          rgba(8, 145, 178, 0.15),
+          transparent 45%
+        );
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 66px);
+      line-height: 1.12;
+      letter-spacing: -1.5px;
+      max-width: 850px;
+      margin: 20px 0;
+    }
+
+    .hero-description {
+      max-width: 730px;
+      font-size: 18px;
+      color: var(--muted);
+      margin-bottom: 26px;
+    }
+
+    .hero-actions {
+      display: flex;
       flex-wrap: wrap;
       gap: 12px;
-    }
-
-    nav a, footer a {
-      color: #67e8f9;
-      text-decoration: none;
-      margin-right: 14px;
-    }
-
-    header, main, footer {
-      max-width: 1100px;
-      margin: auto;
-      padding: 30px 20px;
-    }
-
-    header {
-      padding-top: 65px;
-      padding-bottom: 65px;
-    }
-
-    .tag {
-      color: #67e8f9;
-      font-weight: bold;
-      letter-spacing: 1px;
-      font-size: 13px;
-    }
-
-    h1 {
-      font-size: clamp(34px, 6vw, 58px);
-      line-height: 1.15;
-      max-width: 800px;
-      margin: 16px 0;
-    }
-
-    h2 {
-      margin-top: 45px;
-    }
-
-    .intro {
-      color: #cbd5e1;
-      max-width: 700px;
-      font-size: 18px;
+      margin-top: 25px;
     }
 
     .button {
-      display: inline-block;
-      padding: 12px 20px;
-      background: #0891b2;
-      color: white;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 17px;
       border-radius: 8px;
+      background: var(--accent-dark);
+      border: 1px solid var(--accent-dark);
+      color: white;
+      font-weight: 700;
+      font-size: 14px;
       text-decoration: none;
-      margin-top: 12px;
-      font-weight: bold;
+      transition: background 0.2s, transform 0.2s;
     }
 
     .button:hover {
       background: #0e7490;
+      transform: translateY(-2px);
     }
 
-    .projects {
+    .button-secondary {
+      background: transparent;
+      border-color: var(--border);
+      color: var(--text);
+    }
+
+    .button-secondary:hover {
+      background: var(--surface);
+    }
+
+    /* ===== HIGHLIGHTS ===== */
+    .highlights {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 36px;
+    }
+
+    .highlight {
+      padding: 20px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: rgba(18, 29, 48, 0.65);
+    }
+
+    .highlight strong {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    .highlight span {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* ===== CARDS ===== */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 22px;
-      margin-top: 22px;
     }
 
     .card {
-      background: #172238;
-      padding: 26px;
-      border-radius: 16px;
-      border: 1px solid #334155;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+      min-width: 0;
+      padding: 26px;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      background: linear-gradient(
+        145deg,
+        var(--surface),
+        #101a2b
+      );
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .card:hover {
+      border-color: #426079;
+      transform: translateY(-3px);
+    }
+
+    .card-label {
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+
+    .card h3 {
+      font-size: 21px;
+      line-height: 1.4;
+      margin: 13px 0;
     }
 
     .card p {
-      color: #cbd5e1;
-      flex-grow: 1;
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 16px;
     }
 
-    .project-type {
-      color: #67e8f9;
-      font-size: 12px;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+    .card .card-bottom {
+      margin-top: auto;
+      padding-top: 5px;
     }
 
-    .project-link {
-      color: #67e8f9;
-      font-weight: bold;
+    .card-link {
+      display: inline-block;
+      margin-top: 4px;
+      font-size: 14px;
+      font-weight: 700;
       text-decoration: none;
-      margin-top: 12px;
     }
 
-    .project-link:hover, nav a:hover, footer a:hover {
+    .card-link:hover {
       text-decoration: underline;
     }
 
-    .skills {
+    .project-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 15px;
+      gap: 7px;
+      margin: 0 0 18px;
     }
 
-    .skills span {
-      background: #172238;
-      border: 1px solid #334155;
-      padding: 8px 13px;
+    .project-tags span {
+      border: 1px solid var(--border);
+      background: #101a2b;
+      color: #d4e1ee;
+      padding: 4px 9px;
       border-radius: 20px;
+      font-size: 11px;
+    }
+
+    /* ===== ABOUT ===== */
+    .about-panel {
+      padding: 30px;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      background: var(--surface);
+    }
+
+    .about-panel p {
+      color: var(--muted);
+      margin-top: 14px;
+    }
+
+    .approach {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .approach span {
+      padding: 9px 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--bg);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .approach .arrow {
+      color: var(--accent);
+      border: 0;
+      background: transparent;
+      padding: 0;
+    }
+
+    /* ===== CERTIFICATIONS ===== */
+    .credential-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--success);
+      font-size: 13px;
+      font-weight: 700;
+      margin: 0 0 17px;
+    }
+
+    .credential-status .check {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 20px;
+      height: 20px;
+      border: 1px solid #286847;
+      border-radius: 50%;
+      background: #153528;
+    }
+
+    .credential-card .button {
+      margin-top: auto;
+    }
+
+    .credential-card .card-bottom {
+      width: 100%;
+    }
+
+    /* ===== SKILLS ===== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 15px;
+    }
+
+    .skill-group {
+      padding: 22px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--surface);
+    }
+
+    .skill-group h3 {
+      font-size: 16px;
+      margin-bottom: 13px;
+    }
+
+    .skill-group p {
+      color: var(--muted);
       font-size: 14px;
     }
 
+    /* ===== CONTACT ===== */
+    .contact-panel {
+      padding: 38px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background:
+        radial-gradient(
+          ellipse at 100% 0%,
+          rgba(8, 145, 178, 0.15),
+          transparent 50%
+        ),
+        var(--surface);
+    }
+
+    .contact-panel p {
+      max-width: 650px;
+      color: var(--muted);
+      margin: 14px 0 22px;
+    }
+
+    /* ===== FOOTER ===== */
     footer {
-      border-top: 1px solid #334155;
-      margin-top: 45px;
-      color: #94a3b8;
-      font-size: 14px;
+      border-top: 1px solid var(--border);
+      padding: 25px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    footer a {
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== RESPONSIVE DESIGN ===== */
+    @media (max-width: 760px) {
+      .nav-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 15px 0;
+      }
+
+      .nav-links {
+        gap: 13px;
+      }
+
+      .hero {
+        padding: 65px 0;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .highlights {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding: 48px 0;
+      }
+
+      .contact-panel {
+        padding: 25px;
+      }
+    }
+
+    @media (max-width: 440px) {
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        gap: 10px;
+      }
+
+      .nav-links a {
+        font-size: 12px;
+      }
+
+      .card {
+        padding: 21px;
+      }
+
+      .approach .arrow {
+        display: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *, *::before, *::after {
+        transition: none !important;
+        transform: none !important;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <nav>
-    <strong>Rosa John | Portfolio</strong>
-    <div>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="navbar" aria-label="Main navigation">
+    <div class="container nav-inner">
+
+      <a class="brand" href="#home">Rosa John<span class="accent">.</span></a>
+
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+
     </div>
   </nav>
 
-  <header>
-    <p class="tag">POWER BI · DATA ANALYTICS · BUSINESS INSIGHTS</p>
+  <!-- ===== HERO ===== -->
+  <header class="hero" id="home">
+    <div class="container">
 
-    <h1>Turning Data into Meaningful Business Stories.</h1>
+      <p class="eyebrow">
+        Data Analytics · Business Intelligence · Data Storytelling
+      </p>
 
-    <p class="intro">
-      I combine business understanding, analytical thinking,
-      and data storytelling to turn complex information into
-      actionable insights and better business decisions.
-    </p>
+      <h1>
+        Turning Data into
+        <span class="accent">Meaningful Business Stories.</span>
+      </h1>
 
-    <a class="button" href="#projects">Explore My Projects ↓</a>
+      <p class="hero-description">
+        I bring together business understanding, analytical thinking,
+        and a passion for learning to transform data into insights
+        that support smarter decisions.
+      </p>
+
+      <div class="hero-actions">
+        <a class="button" href="#projects">
+          Explore My Projects ↓
+        </a>
+
+        <a class="button button-secondary"
+           href="https://www.linkedin.com/in/rosa-john-09885a109/"
+           target="_blank" rel="noopener noreferrer">
+          LinkedIn ↗
+        </a>
+
+        <a class="button button-secondary"
+           href="https://github.com/Rj24datawizard"
+           target="_blank" rel="noopener noreferrer">
+          GitHub ↗
+        </a>
+      </div>
+
+      <div class="highlights">
+        <div class="highlight">
+          <strong>Business-First Thinking</strong>
+          <span>Connecting analysis to real business questions.</span>
+        </div>
+
+        <div class="highlight">
+          <strong>Data & Insights</strong>
+          <span>Making information easier to understand and act on.</span>
+        </div>
+
+        <div class="highlight">
+          <strong>Learning & Development</strong>
+          <span>Building skills and communicating knowledge clearly.</span>
+        </div>
+      </div>
+
+    </div>
   </header>
 
   <main>
-    <section id="projects">
-      <h2>Featured Projects</h2>
-      <p class="intro">
-        A selection of projects showcasing my approach to
-        problem-solving, data analysis, and business intelligence.
-      </p>
 
-      <div class="projects">
+    <!-- ===== ABOUT ===== -->
+    <section class="section" id="about">
+      <div class="container">
 
-        <article class="card">
-          <span class="project-type">Power BI · Behavioural Analytics</span>
-          <h3>🎧 Spotify Wrapped 2024 through the eyes of Microsoft's Power BI</h3>
+        <p class="eyebrow">A little about me</p>
+        <h2 class="section-heading">Business Experience Meets Data Thinking</h2>
+
+        <div class="about-panel">
           <p>
-            An exploration of Spotify listening data through
-            interactive visualizations, uncovering listening
-            patterns, favourite artists, music trends, and
-            personalized insights.
+            My professional background spans e-commerce, operations,
+            customer experience, team development, and business reporting.
+            These experiences have shaped how I approach analytical
+            problems: start with the business question, understand the
+            data, and communicate findings in a useful way.
           </p>
-          <a class="project-link"
-             href="https://github.com/Rj24datawizard/-My-Spotify-Wrapped-2024-through-the-Eyes-of-Power-BI-"
-             target="_blank" rel="noopener noreferrer">
-            Explore Spotify Project →
-          </a>
-        </article>
 
-        <article class="card">
-          <span class="project-type">Power BI · Business Strategy</span>
-          <h3>📺 Strategic OTT Merger Analysis</h3>
           <p>
-            An analysis of the proposed LioCinema and Jotstar
-            merger, exploring subscriber behaviour, content
-            consumption, platform engagement, and opportunities
-            for strategic growth.
+            Through my portfolio projects, I am developing and showcasing
+            my capabilities in Power BI, data visualization, analytical
+            thinking, and business storytelling.
           </p>
-          <a class="project-link"
-             href="https://github.com/Rj24datawizard/Providing-Insights-for-a-Strategic-Merger--LioCinemas-and-Jotstar"
-             target="_blank" rel="noopener noreferrer">
-            Explore OTT Project →
-          </a>
-        </article>
+
+          <p>
+            I am particularly interested in opportunities where data,
+            business understanding, and knowledge sharing come together.
+          </p>
+
+          <div class="approach" aria-label="My analytical approach">
+            <span>Business Problem</span>
+            <span class="arrow" aria-hidden="true">→</span>
+            <span>Data Preparation</span>
+            <span class="arrow" aria-hidden="true">→</span>
+            <span>Analysis</span>
+            <span class="arrow" aria-hidden="true">→</span>
+            <span>Insights</span>
+            <span class="arrow" aria-hidden="true">→</span>
+            <span>Recommendations</span>
+          </div>
+        </div>
 
       </div>
     </section>
 
-    <section id="approach">
-      <h2>How I Approach a Business Problem</h2>
-      <p class="intro">
-        Business Problem → Data Preparation → Analysis →
-        Insights → Recommendations
-      </p>
-    </section>
+    <!-- ===== PROJECTS ===== -->
+    <section class="section" id="projects">
+      <div class="container">
 
-    <section id="skills">
-      <h2>Tools & Skills</h2>
-      <div class="skills">
-        <span>Power BI</span>
-        <span>Microsoft Excel</span>
-        <span>SQL</span>
-        <span>Data Visualization</span>
-        <span>Business Analysis</span>
-        <span>Data Storytelling</span>
-        <span>Reporting & Insights</span>
+        <p class="eyebrow">Selected work</p>
+        <h2 class="section-heading">Featured Projects</h2>
+
+        <p class="section-intro">
+          Exploring real-world questions through data analysis,
+          visualization, and business-focused storytelling.
+          Select a project to explore its documentation and deliverables.
+        </p>
+
+        <div class="grid">
+
+          <!-- SPOTIFY PROJECT -->
+          <article class="card">
+            <span class="card-label">Power BI · Music Analytics</span>
+
+            <h3>🎧 Spotify Wrapped 2024: Through the Eyes of Power BI</h3>
+
+            <p>
+              An exploration of Spotify listening data through interactive
+              visualizations, uncovering listening patterns, favourite
+              artists, music preferences, and trends.
+            </p>
+
+            <div class="project-tags">
+              <span>Power BI</span>
+              <span>Data Visualization</span>
+              <span>Storytelling</span>
+            </div>
+
+            <div class="card-bottom">
+              <a class="card-link"
+                 href="https://github.com/Rj24datawizard/-My-Spotify-Wrapped-2024-through-the-Eyes-of-Power-BI-"
+                 target="_blank" rel="noopener noreferrer">
+                Explore Spotify Project ↗
+              </a>
+            </div>
+          </article>
+
+          <!-- OTT PROJECT -->
+          <article class="card">
+            <span class="card-label">Power BI · Business Strategy</span>
+
+            <h3>📺 Strategic OTT Merger Analysis: LioCinema + Jotstar</h3>
+
+            <p>
+              A business intelligence case study exploring subscriber
+              behaviour, content consumption, platform engagement, and
+              opportunities arising from a potential streaming-platform
+              merger.
+            </p>
+
+            <div class="project-tags">
+              <span>Power BI</span>
+              <span>Business Analysis</span>
+              <span>KPIs</span>
+              <span>Insights</span>
+            </div>
+
+            <div class="card-bottom">
+              <a class="card-link"
+                 href="https://github.com/Rj24datawizard/Providing-Insights-for-a-Strategic-Merger--LioCinemas-and-Jotstar"
+                 target="_blank" rel="noopener noreferrer">
+                Explore OTT Project ↗
+              </a>
+            </div>
+          </article>
+
+        </div>
       </div>
     </section>
 
-    <section id="contact">
-      <h2>Let's Connect</h2>
-      <p>
-        Interested in data analytics, business intelligence,
-        and turning insights into impact? Let's connect.
-      </p>
+    <!-- ===== CERTIFICATIONS ===== -->
+    <section class="section" id="certifications">
+      <div class="container">
 
-      <a class="button"
-         href="https://www.linkedin.com/in/rosa-john-09885a109/"
-         target="_blank" rel="noopener noreferrer">
-        Connect on LinkedIn ↗
-      </a>
+        <p class="eyebrow">Professional development</p>
+        <h2 class="section-heading">Certifications & Credentials</h2>
 
-      <p>
-        <a class="project-link"
-           href="https://github.com/Rj24datawizard"
-           target="_blank" rel="noopener noreferrer">
-          View My GitHub Profile →
-        </a>
-      </p>
+        <p class="section-intro">
+          A collection of Microsoft, Maven Analytics, and Codebasics
+          credentials. Open each official credential page to view
+          its exact title and verification details.
+        </p>
+
+        <div class="grid">
+
+          <!-- MICROSOFT CREDENTIAL 1 -->
+          <article class="card credential-card">
+            <span class="card-label">Microsoft · Credential 01</span>
+
+            <h3>Microsoft Credential</h3>
+
+            <p>
+              View my first Microsoft credential and its official
+              certification details.
+            </p>
+
+            <div class="card-bottom">
+              <span class="credential-status">
+                <span class="check" aria-hidden="true">✓</span>
+                Earned
+              </span>
+
+              <a class="button"
+                 href="https://learn.microsoft.com/en-us/users/rosajohn-4181/credentials/2ed82edae9c18887"
+                 target="_blank" rel="noopener noreferrer">
+                Verify Credential ↗
+              </a>
+            </div>
+          </article>
+
+          <!-- MICROSOFT CREDENTIAL 2 -->
+          <article class="card credential-card">
+            <span class="card-label">Microsoft · Credential 02</span>
+
+            <h3>Microsoft Credential</h3>
+
+            <p>
+              View my second Microsoft credential and its official
+              certification details.
+            </p>
+
+            <div class="card-bottom">
+              <span class="credential-status">
+                <span class="check" aria-hidden="true">✓</span>
+                Earned
+              </span>
+
+              <a class="button"
+                 href="https://learn.microsoft.com/en-us/users/rosajohn-5778/credentials/acd75c6dfb0d1106"
+                 target="_blank" rel="noopener noreferrer">
+                Verify Credential ↗
+              </a>
+            </div>
+          </article>
+
+          <!-- MAVEN ANALYTICS CREDENTIAL 1 -->
+          <article class="card credential-card">
+            <span class="card-label">Maven Analytics · Credential 01</span>
+
+            <h3>Maven Analytics Certificate</h3>
+
+            <p>
+              View my completed Maven Analytics certificate and
+              its official course or credential details.
+            </p>
+
+            <div class="card-bottom">
+              <span class="credential-status">
+                <span class="check" aria-hidden="true">✓</span>
+                Earned
+              </span>
+
+              <a class="button"
+                 href="https://certificates.mavenanalytics.io/a6d104b2-f708-4be2-805e-635240dc12b3"
+                 target="_blank" rel="noopener noreferrer">
+                View Certificate ↗
+              </a>
+            </div>
+          </article>
+
+          <!-- MAVEN ANALYTICS CREDENTIAL 2 -->
+          <article class="card credential-card">
+            <span class="card-label">Maven Analytics · Credential 02</span>
+
+            <h3>Maven Analytics Certificate</h3>
+
+            <p>
+              View my additional Maven Analytics certificate and
+              its official course or credential details.
+            </p>
+
+            <div class="card-bottom">
+              <span class="credential-status">
+                <span class="check" aria-hidden="true">✓</span>
+                Earned
+              </span>
+
+              <a class="button"
+                 href="https://certificates.mavenanalytics.io/64d9c75e-2dac-4836-9662-a5a0a0aee801"
+                 target="_blank" rel="noopener noreferrer">
+                View Certificate ↗
+              </a>
+            </div>
+          </article>
+
+          <!-- CODEBASICS CREDENTIAL 1 -->
+          <article class="card credential-card">
+            <span class="card-label">Codebasics · Credential 01</span>
+
+            <h3>Codebasics Certificate</h3>
+
+            <p>
+              View my completed Codebasics credential and
+              its official learning details.
+            </p>
+
+            <div class="card-bottom">
+              <span class="credential-status">
+                <span class="check" aria-hidden="true">✓</span>
+                Earned
+              </span>
+
+              <a class="button"
+                 href="https://codebasics.io/certificate/CB-51-332778"
+                 target="_blank" rel="noopener noreferrer">
+                View Certificate ↗
+              </a>
+            </div>
+          </article>
+
+          <!-- CODEBASICS CREDENTIAL 2 -->
+          <article class="card credential-card">
+            <span class="card-label">Codebasics · Credential 02</span>
+
+            <h3>Codebasics Certificate</h3>
+
+            <p>
+              View my additional Codebasics credential and
+              its official learning details.
+            </p>
+
+            <div class="card-bottom">
+              <span class="credential-status">
+                <span class="check" aria-hidden="true">✓</span>
+                Earned
+              </span>
+
+              <a class="button"
+                 href="https://codebasics.io/certificate/CB-49-332778"
+                 target="_blank" rel="noopener noreferrer">
+                View Certificate ↗
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </div>
     </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section class="section" id="skills">
+      <div class="container">
+
+        <p class="eyebrow">Tools & capabilities</p>
+        <h2 class="section-heading">Skills & Areas of Focus</h2>
+
+        <p class="section-intro">
+          A combination of analytical tools, business understanding,
+          and communication skills applied to solving problems.
+        </p>
+
+        <div class="skills-grid">
+
+          <article class="skill-group">
+            <h3>📊 Business Intelligence</h3>
+            <p>
+              Power BI, data visualization, dashboards,
+              KPI reporting, and business insights.
+            </p>
+          </article>
+
+          <article class="skill-group">
+            <h3>📈 Data & Reporting</h3>
+            <p>
+              Microsoft Excel, advanced spreadsheet analysis,
+              reporting automation concepts, and data interpretation.
+            </p>
+          </article>
+
+          <article class="skill-group">
+            <h3>🧩 Business Analysis</h3>
+            <p>
+              Problem definition, performance analysis,
+              trend identification, and recommendations.
+            </p>
+          </article>
+
+          <article class="skill-group">
+            <h3>🎯 Operations & Process</h3>
+            <p>
+              SOP development, workflow standardization,
+              performance tracking, and process improvement.
+            </p>
+          </article>
+
+          <article class="skill-group">
+            <h3>🎓 Training & Development</h3>
+            <p>
+              Knowledge sharing, onboarding, refresher training,
+              capability building, and clear communication.
+            </p>
+          </article>
+
+          <article class="skill-group">
+            <h3>📖 Data Storytelling</h3>
+            <p>
+              Translating findings into clear narratives
+              that help stakeholders understand the business impact.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="section" id="contact">
+      <div class="container">
+
+        <div class="contact-panel">
+          <p class="eyebrow">Let's connect</p>
+
+          <h2 class="section-heading">
+            Curious about data. Focused on business impact.
+          </h2>
+
+          <p>
+            I enjoy connecting business challenges with analytical
+            thinking and clear communication. Explore my projects,
+            review my credentials, or connect with me professionally.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button"
+               href="https://www.linkedin.com/in/rosa-john-09885a109/"
+               target="_blank" rel="noopener noreferrer">
+              Connect on LinkedIn ↗
+            </a>
+
+            <a class="button button-secondary"
+               href="https://github.com/Rj24datawizard"
+               target="_blank" rel="noopener noreferrer">
+              Explore GitHub ↗
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
   </main>
 
+  <!-- ===== FOOTER ===== -->
   <footer>
-    <p>© 2026 Rosa John · Data Analytics Portfolio</p>
-    <p>Built with HTML, CSS & GitHub Pages.</p>
+    <div class="container footer-inner">
+      <p>© 2026 Rosa John · Data Analytics Portfolio</p>
+
+      <p>
+        Built with HTML & CSS ·
+        <a href="#home">Back to top ↑</a>
+      </p>
+    </div>
   </footer>
 
 </body>
