@@ -149,7 +149,7 @@
     }
 
     .hero-tagline {
-      color: var(--accent);
+      color: #F4B860;
       font-size: clamp(15px, 2vw, 19px);
       font-weight: 700;
       letter-spacing: 0.2px;
@@ -163,6 +163,22 @@
       letter-spacing: -1.5px;
       max-width: 850px;
       margin: 20px 0;
+    }
+
+    .typing-cursor {
+      display: inline-block;
+      color: var(--accent);
+      margin-left: 3px;
+      font-weight: 400;
+      animation: cursor-blink 0.8s steps(2, start) infinite;
+    }
+
+    @keyframes cursor-blink {
+      to { visibility: hidden; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .typing-cursor { animation: none; }
     }
 
     .hero-description {
@@ -555,9 +571,9 @@
         Educator at heart. Storyteller by craft. Data-driven by choice.
       </p>
 
-      <h1>
-        Turning Data into
-        <span class="accent">Meaningful Business Stories.</span>
+      <h1 class="typing-heading" aria-label="Turning Data into Meaningful Business Stories.">
+        <span id="typed-prefix">Turning Data into</span>
+        <span class="accent" id="typed-accent"> Meaningful Business Stories.</span><span class="typing-cursor" aria-hidden="true">|</span>
       </h1>
 
       <p class="hero-description">
@@ -1008,6 +1024,42 @@
       </p>
     </div>
   </footer>
+
+
+  <script>
+    (() => {
+      const prefix = document.getElementById('typed-prefix');
+      const accent = document.getElementById('typed-accent');
+      const heading = document.querySelector('.typing-heading');
+      if (!prefix || !accent || !heading) return;
+
+      const firstPart = 'Turning Data into';
+      const secondPart = ' Meaningful Business Stories.';
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (reducedMotion) return;
+
+      prefix.textContent = '';
+      accent.textContent = '';
+      let i = 0;
+      const typeNext = () => {
+        if (i < firstPart.length) {
+          prefix.textContent += firstPart.charAt(i++);
+          window.setTimeout(typeNext, 65);
+        } else {
+          let j = 0;
+          const typeAccent = () => {
+            if (j < secondPart.length) {
+              accent.textContent += secondPart.charAt(j++);
+              window.setTimeout(typeAccent, 55);
+            }
+          };
+          window.setTimeout(typeAccent, 180);
+        }
+      };
+      window.setTimeout(typeNext, 350);
+    })();
+  </script>
 
 </body>
 </html>
